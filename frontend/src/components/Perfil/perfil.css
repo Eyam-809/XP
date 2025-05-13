@@ -1,0 +1,291 @@
+/* Añadir al CSS existente */
+
+/* 1. Asegurar contenedor principal */
+.container_pf {
+  width: 100vw;
+  min-height: 100vh;
+  
+  margin: 0;
+  padding: 70px 0 0 0;
+  overflow-x: hidden;
+}
+
+/* 2. Modificar contenido dinámico */
+.content_pf {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 3. Ajustar grid de productos */
+.products_pf {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.product-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.btn-edit {
+  background-color: #fcf300;
+  color: rgb(0, 0, 0);
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-delete {
+  background-color: #dc3545;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.product_pf:hover {
+  transform: scale(1.05) translateY(-5px);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* 4. Nueva clase para sección de información */
+.info-section_pf {
+  width: 100%;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* 5. Forzar mismo ancho en todas las pestañas */
+[class*="_pf"] {
+  box-sizing: border-box;
+}
+
+/* 6. Ajustar imagen de perfil */
+.profile-pic_pf img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* Si deseas controlar más el tamaño o la apariencia, puedes ajustar la altura de los contenedores */
+.profile_pf {
+  height: 100%; /* Asegura que el contenedor de información también ocupe todo el espacio disponible */
+}
+
+.edit-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.edit-modal label {
+  display: block;
+  margin: 10px 0;
+}
+
+.edit-modal input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border-radius: 5px;
+}
+
+.edit-modal button {
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+
+.navbar_pf {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #8b0000;
+  padding: 15px;
+  color: white;
+}
+
+.logo_pf {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.search-bar_pf {
+  flex-grow: 1;
+  max-width: 400px;
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+}
+
+.menu_pf {
+  position: relative;
+}
+
+.menu-button_pf {
+  background: #006400;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.menu-button_pf:hover {
+  background: #004d00;
+}
+
+.menu-desplegable_pf {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background: white;
+  color: black;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  width: 150px;
+}
+
+.menu-desplegable_pf li {
+  padding: 10px;
+  list-style: none;
+}
+
+.menu-desplegable_pf li a {
+  text-decoration: none;
+  color: black;
+  display: block;
+  padding: 10px;
+}
+
+.menu-desplegable_pf li a:hover {
+  background: #ddd;
+}
+
+  
+  /* Navbar */
+  .navbar_pf {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #8b0000;
+    padding: 15px;
+    color: white;
+  }
+  
+  .logo_pf {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .search-bar_pf {
+    width: 40%;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+  }
+  
+  .icons_pf {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .icon_pf {
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  /* Perfil */
+  .profile_pf {
+    text-align: center;
+    padding: 30px;
+    background: #ddd;
+  }
+  
+  .profile-pic_pf img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 3px solid white;
+  }
+  
+  .buttons_pf {
+    margin-top: 10px;
+  }
+  
+  .btn_pf {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  /* Tabs */
+  .tabs_pf {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px;
+    border-bottom: 2px solid #ddd;
+    font-weight: bold;
+  }
+  
+  .tabs_pf span {
+    cursor: pointer;
+  }
+  
+  /* Productos */
+  .products_pf {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    padding: 20px;
+  }
+  
+  .product_pf {
+    background: white;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .image-placeholder_pf {
+    height: 100px;
+    background: #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  
+  .price_pf {
+    color: red;
+    font-weight: bold;
+  }
+
+  .h2_text{
+    color: black;
+  }

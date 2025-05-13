@@ -1,0 +1,345 @@
+/* Barra de navegación fija */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #8B0000; /* Rojo oscuro */
+  color: white;
+  padding: 15px;
+  z-index: 1000; /* Asegura que esté sobre el contenido */
+}
+
+.contentProductosDash {
+  overflow: visible; /* Asegura que todo el contenido sea visible */
+}
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  background-color: #8B0000; /* Rojo oscuro */
+  color: white;
+}
+
+.boton-mi-cuenta {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.boton-mi-cuenta span {
+  margin-left: 5px;
+}
+
+.mensaje-carrito {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #28a745;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  font-weight: bold;
+  transition: opacity 0.5s ease-in-out;
+}
+
+
+/* Asegurar que el buscador y el carrito estén bien alineados */
+.nav-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-container input {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.contentProductosDash {
+  max-height: none; /* Elimina cualquier límite de altura */
+  margin-top: 90px; /* Ajusta para que el contenido no se solape con el nav */
+  padding: 10px;
+  background-color: rgb(255, 255, 255); /* Fondo blanco */
+  min-height: auto; /* Ajusta la altura automáticamente */
+  color: black; /* Cambia el color del texto a negro */
+  overflow: auto; /* Añade un scroll si es necesario */
+}
+
+.bi-cart4 {
+  font-size: 24px;
+  cursor: pointer;
+}
+.boton-mi-cuenta span {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .boton-mi-cuenta span {
+    display: inline;
+  }
+}
+.boton-mi-cuenta:hover {
+  color: gray;
+  background-color: transparent;
+}
+
+
+
+.truncated {
+  white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+  overflow: hidden; /* Esconde cualquier texto que sobresalga */
+  text-overflow: ellipsis; /* Muestra tres puntos (...) al final */
+}
+
+
+.contentProductosDash{
+  color: black;
+  min-height: 100%; /* Ocupa toda la pantalla */
+}
+
+.card { 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  height: auto; /* Permite que la altura de la tarjeta se ajuste según el contenido */
+  max-width: 400px;
+  padding: 10px;
+  overflow: visible; /* Asegura que todo el contenido sea visible */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: scale(1.05) translateY(-5px);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.bi bi-cart4{
+  margin-right: 100px;
+}
+
+
+.card-img-top {
+  width: 100%;
+  height: auto;
+  max-height: 150px;
+  object-fit: contain;
+}
+.card-deck {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+  flex-grow: 1; /* Asegura que las tarjetas ocupen todo el espacio disponible */
+}
+
+
+.card-body {
+  flex-grow: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+
+.dashboard-content {
+    margin-top: 50px; /* Ajusta esto a la altura de tu barra de navegación */
+    padding: 2rem 2rem;
+    background-color: #f9fafb;
+    min-height: calc(100vh - 100px);
+}
+
+.menu-desplegable {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  display: block;
+  flex-direction: column;
+  width: 150px;
+}
+
+.menu-desplegable li {
+  list-style: none;
+  padding: 8px;
+  text-align: left;
+}
+
+.menu-desplegable li a {
+  text-decoration: none;
+  color: black;
+  display: block;
+  width: 100%;
+}
+
+.menu-desplegable li:hover {
+  background: #f0f0f0;
+}
+
+.Txt_nav{
+  color: black;
+}
+  
+nav .max-w-12xl {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Espacio entre los elementos */
+    width: 100%;
+}
+  
+  /* Título del Dashboard */
+  nav h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-right: auto; /* Mueve el título a la izquierda */
+  }
+  
+  /* Barra de búsqueda */
+  nav input {
+    padding: 0.8rem;
+    border-radius: 0.375rem;
+    border: none;
+    width: 250px;
+    font-size: 1rem;
+    outline: none;
+    transition: box-shadow 0.3s ease;
+    margin-right: 1rem; /* Añadir espacio entre la búsqueda y los enlaces */
+  }
+  
+  nav input:focus {
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5); /* Resaltar al hacer foco */
+  }
+  
+  nav input::placeholder {
+    color: #b3b3b3;
+  }
+  
+  /* Menú de navegación */
+  nav ul { list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 2rem;
+    margin-left: 2rem; /* Asegura que el espacio entre la búsqueda y los enlaces sea adecuado */
+    flex-wrap: wrap; /* Permite que los elementos se ajusten cuando el espacio sea limitado */
+  }  
+  
+  nav ul li {
+    cursor: pointer;
+    position: relative;
+  }  
+  nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+  
+  nav ul li a:hover {
+    color: #63b3ed; /* Azul claro al pasar el ratón */
+  }
+  
+  /* Contenedor de resultados */
+  .dashboard-content {
+    margin-top: 100px; /* Espacio suficiente para la barra fija */
+    padding: 2rem 2rem;
+    background-color: #f9fafb; /* Fondo gris suave */
+    min-height: calc(100vh - 100px); /* Asegura que ocupe toda la pantalla */
+  }
+  
+  /* Contenedor de resultados */
+.results-container {
+    background-color: #ffffff;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+    margin-top: 2rem;
+    display: none; /* Ocultar de forma predeterminada */
+  }
+  
+  /* Cuando haya texto en la búsqueda, mostrar los resultados */
+  .results-container.show {
+    display: block;
+  }
+  
+  
+  /* Lista de resultados */
+  .results-container ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .results-container ul li {
+    padding: 1rem;
+    border-bottom: 1px solid #e2e8f0; /* Línea entre elementos */
+    font-size: 1rem;
+    color: #4a5568; /* Gris medio */
+    transition: background-color 0.3s ease;
+  }
+  
+  .results-container ul li:last-child {
+    border-bottom: none;
+  }
+  
+  .results-container ul li:hover {
+    background-color: #f1f5f9; /* Fondo suave al pasar el ratón */
+  }
+  
+  /* Estilo para mensaje cuando no se encuentran resultados */
+  .results-container p {
+    color: #718096; /* Gris claro */
+    font-size: 1rem;
+    font-weight: 400;
+  }
+  
+  /* Responsividad para pantallas pequeñas */
+  @media (max-width: 768px) {
+    nav {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1rem;
+    }
+  
+    nav h1 {
+      font-size: 1.25rem;
+    }
+  
+    nav input {
+      width: 100%;
+      margin-top: 0.5rem;
+    }
+  
+    nav ul {
+      margin-top: 1rem;
+      flex-direction: column;
+      gap: 1rem;
+    }
+  
+    nav ul li {
+      width: 100%; /* Asegura que los elementos ocupen todo el ancho */
+      text-align: center; /* Centra los enlaces */
+    }
+  }
+
+  .container mx-auto p-4{
+    background: #800000;
+  }
+  

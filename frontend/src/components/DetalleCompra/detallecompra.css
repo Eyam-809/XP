@@ -1,0 +1,173 @@
+.container_DeCom{
+  margin-top: 90px; /* Ajusta para que el contenido no se solape con el nav */
+  padding: 10px;
+  background-color: rgb(255, 255, 255); /* Fondo blanco */
+  min-height: 100%; /* Ocupa toda la pantalla */
+  color: black; /* Cambia el color del texto a negro */
+  
+}
+
+.cantidad-control_DeCom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Separa los elementos */
+  max-width: 100vw;
+  gap: 10px; /* Espaciado entre los elementos */
+}
+
+.btn_sumar_restar {
+  padding: 5px 10px;
+  font-size: 16px;
+  border: none;
+  background-color: #007bff00;
+  color: rgb(0, 0, 0);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn_sumar_restar:hover {
+  background-color: #000000e2;
+  color: white;
+}
+
+.cantidad-control_DeCom input {
+  width: 50px;
+  text-align: center;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+
+/* Estilos generales */
+.detalle-container_compra_DeCom {
+  max-width: 900px; /* Ajusta el ancho del contenido */
+  margin: auto;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos del producto */
+.producto-detalle_DeCom {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.producto-imagenes_DeCom {
+  flex: 1;
+  max-width: 400px;
+}
+
+.imagen-principal_DeCom {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.producto-info_DeCom {
+  flex: 1;
+  max-width: 400px;
+}
+
+.producto-nombre_DeCom {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.descripcion_DeCom {
+  font-size: 16px;
+  color: #555;
+}
+
+.precio_DeCom {
+  margin-left: auto; /* Empuja el precio a la derecha */
+  font-size: 24px;
+  font-weight: bold;
+  font-size: 20px;
+  font-weight: bold;
+  color: #008000;
+}
+
+/* Botones */
+.boton-comprar_DeCom, .boton-carrito_DeCom {
+  width: 100%;
+  max-width: 250px;
+  padding: 10px;
+  font-size: 16px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+.boton-comprar_DeCom {
+  background: #28a745;
+}
+
+.boton-comprar_DeCom:hover {
+  background: #218838;
+}
+
+.boton-carrito_DeCom {
+  background: #007bff;
+}
+
+.boton-carrito_DeCom:hover {
+  background: #0056b3;
+}
+
+/* Estilos del formulario de compra */
+input_DeCom, button_DeCom {
+  width: 100%;
+  max-width: 300px;
+  padding: 8px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+input_DeCom:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+button_DeCom {
+  background: #28a745;
+  color: white;
+  cursor: pointer;
+}
+
+button_DeCom:hover {
+  background: #218838;
+}
+
+input[type="number"] {
+  background-color: white !important;
+  color: black !important;
+  border: 1px solid #ccc;
+  text-align: center;
+  font-size: 16px;
+  width: 50px;
+  height: 30px;
+}
+
+/* Ocultar las flechas del input number */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+

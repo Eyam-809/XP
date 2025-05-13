@@ -1,0 +1,31 @@
+.containerRegistro {
+    max-width: 1000px;
+    background: rgb(255, 255, 255);
+    max-height: 100vw; /* Limita el ancho */
+    width: 90%; /* Hace que sea más flexible en pantallas pequeñas */
+    margin: auto; /* Centra el contenido */
+    text-align: center;
+    overflow: hidden; /* Evita que crezca con contenido excesivo */
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.btnRegistrar {
+    width: 100%;
+    background-color:rgb(0, 123, 255);
+    transition: background-color 0.3s ease; /* Agrega una transición suave */
+}
+
+.btnRegistrar:hover {
+    background-color: darkblue; /* Cambia el color al pasar el mouse */
+}
+
+.btnVolver {
+    width: 95%;
+    background-color: rgb(255, 251, 0);
+    transition: background-color 0.3s ease; /* Agrega una transición suave */
+}
+
+.btnVolver:hover {
+    background-color: rgb(255, 200, 0); /* Cambia el color al pasar el mouse */
+}

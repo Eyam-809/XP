@@ -1,0 +1,10 @@
+.contentProductosDashCarrito {
+    max-height: none; /* Elimina cualquier límite de altura */
+    margin-top: 90px; /* Ajusta para que el contenido no se solape con el nav */
+    padding: 10px;
+    background-color: rgb(255, 255, 255); /* Fondo blanco */
+    min-height: auto; /* Ajusta la altura automáticamente */
+    color: black; /* Cambia el color del texto a negro */
+    overflow: auto; /* Añade un scroll si es necesario */
+    border-radius: 10px;
+  }
