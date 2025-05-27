@@ -60,6 +60,11 @@ Route::get('/carrito', [CarritoController::class, 'verCarrito']);
 // routes/api.php
 Route::delete('carrito/eliminar/{id}', [CarritoController::class, 'eliminarDelCarrito']);
 
+/*git add .
+git commit -m "Agrega login al frontend"
+git push origin Xp-dev
+*/
+
 
 
 
