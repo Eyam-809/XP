@@ -196,7 +196,7 @@ const PerfilUser = () => {
       <nav>
         <div className="max-w-12xl mx-auto flex justify-between items-center">
           <h1 onClick={() => navigate("/dashboard")} className="text-xl font-bold">
-            XPMartek
+            XPMarket
           </h1>
 
           <div className="flex items-center space-x-4">

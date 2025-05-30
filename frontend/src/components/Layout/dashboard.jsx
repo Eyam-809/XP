@@ -119,10 +119,11 @@ function Dashboard() {
               onChange={(e) => setSearchTerm(e.target.value)}
               className="p-2 rounded text-black"
             />
-
+            {/*//icono de Carrito*/}
             <i onClick={Ir_carrito} className="bi bi-cart4 text-2xl cursor-pointer"></i>
+            {/*//icono de Intercanbio*/}
             <i onClick={Ir_carrito} className="bi bi-arrows-expand-vertical text-2xl border-red-500 rounded-md p-3 cursor-pointer"></i>
-            
+            {/*//icono de chat*/}
             <i onClick={Ir_carrito} className="bi bi-chat-left-text text-2xl cursor-pointer"></i>
           </div>
 
