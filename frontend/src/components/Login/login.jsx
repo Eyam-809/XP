@@ -30,8 +30,11 @@ function Login() {
     // Guarda el token y el ID del usuario en localStorage
     localStorage.setItem("token", response.data.token);
     localStorage.setItem("user_id", response.data.user.id); // Asegúrate de acceder correctamente a 'user.id'
+    localStorage.setItem("plan_id", response.data.user.plan_id);
+
     setSuccessMessage("¡Bienvenido de nuevo!");
     console.log(localStorage.getItem('user_id'));
+    console.log(localStorage.getItem('plan_id'));
 
     setTimeout(() => {
       window.location.href = "/dashboard"; // Redirige después de un tiempo

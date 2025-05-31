@@ -10,6 +10,7 @@ function Dashboard() {
   const [productos, setProductos] = useState([]);
   const [filteredResults, setFilteredResults] = useState([]);
   const [menuAbierto, setMenuAbierto] = useState(false);
+  const [usuario, setUser] = useState(null);
 
   useEffect(() => {
     fetchProductos();
@@ -25,6 +26,8 @@ function Dashboard() {
     setProductos(data);
   };
 
+
+
   const handleLogout = () => {
     localStorage.removeItem("token");
     navigate("/login");
@@ -37,6 +40,28 @@ function Dashboard() {
   const toggleMenu = () => setMenuAbierto(!menuAbierto);
 
   const verDetallesProducto = (id) => navigate(`/detalleproducto/${id}`);
+
+  //const plan_id = localStorage.getItem("plan_id" || 0)
+  //console.log("este es el plan que tiene " + plan_id)
+
+  useEffect(() => {
+  const fetchUser = async () => {
+    const token = localStorage.getItem("token");
+
+    const response = await fetch("http://127.0.0.1:8000/api/user", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      setUser(data);
+    }
+  };
+
+  fetchUser();
+}, []);
 
   useEffect(() => {
     if (searchTerm.trim() === "") {
@@ -101,7 +126,7 @@ function Dashboard() {
   }
 
 };
-
+console.log(usuario)
   return (
     <div>
       <nav>
@@ -121,10 +146,16 @@ function Dashboard() {
             />
             {/*//icono de Carrito*/}
             <i onClick={Ir_carrito} className="bi bi-cart4 text-2xl cursor-pointer"></i>
-            {/*//icono de Intercanbio*/}
-            <i onClick={Ir_carrito} className="bi bi-arrows-expand-vertical text-2xl border-red-500 rounded-md p-3 cursor-pointer"></i>
-            {/*//icono de chat*/}
-            <i onClick={Ir_carrito} className="bi bi-chat-left-text text-2xl cursor-pointer"></i>
+           
+             {/* Íconos visibles solo si el plan_id NO es 1 */}
+            {usuario?.plan_id ===2 &&(
+              <>
+               {/*//icono de Intercanbio*/}
+                <i onClick={Ir_carrito} className="bi bi-arrows-expand-vertical text-2xl border-red-500 rounded-md p-3 cursor-pointer"></i>
+                {/*//icono de chat*/}
+                <i onClick={Ir_carrito} className="bi bi-chat-left-text text-2xl cursor-pointer"></i>
+              </>
+            )}
           </div>
 
 

@@ -50,5 +50,11 @@ class User extends Authenticatable
     public function products() {
         return $this->hasMany(Product::class, 'id_user');
     }
+
+    public function plan()
+{
+    return $this->belongsTo(Plan::class);
+}
+
     
 }
