@@ -7,6 +7,7 @@ use App\Http\Controllers\RegistroController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\CarritoController;
+use App\Http\Controllers\planesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,6 +60,8 @@ Route::post('/carrito/agregar', [CarritoController::class, 'agregarAlCarrito']);
 Route::get('/carrito', [CarritoController::class, 'verCarrito']);
 // routes/api.php
 Route::delete('carrito/eliminar/{id}', [CarritoController::class, 'eliminarDelCarrito']);
+
+Route::get('/plan', [planesController::class, 'index']);
 
 /*git add .
 git commit -m "Agrega login al frontend"

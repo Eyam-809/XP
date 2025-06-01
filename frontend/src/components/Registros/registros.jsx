@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom"; // Importa useNavigate
+import { data, useNavigate } from "react-router-dom"; // Importa useNavigate
 import "./registro.css";
 
 function Registro() {
@@ -13,6 +13,9 @@ function Registro() {
   const [direccion, setDireccion] = useState(""); // Nuevo estado para dirección
   const [message, setMessage] = useState("");
   const [errors, setErrors] = useState({});
+  //PLANES
+  const [planSeleccionado, setPlanSeleccionado] = useState("");
+  const [planes, setPlanes] = useState([]);
 
   const navigate = useNavigate(); // Inicializa useNavigate
 
@@ -32,7 +35,8 @@ function Registro() {
         password,
         password_confirmation,
         telefono, // Ahora está definido
-        direccion  // Ahora está definido
+        direccion,  // Ahora está definido
+        plan_id: planSeleccionado
     };
 
     try {
@@ -47,6 +51,19 @@ function Registro() {
         }
     }
 };
+
+useEffect(() => {
+    // Llama al backend para obtener los planes
+    fetch("http://localhost:8000/api/plan")
+      .then((response) => response.json())
+      .then((data) => {
+        setPlanes(data); // Guardamos los planes en el estado
+      })
+      .catch((error) => {
+        console.error("Error al obtener los planes:", error);
+      });
+  }, []);
+
 
   return (
     <div className="containerRegistro">
@@ -92,6 +109,36 @@ function Registro() {
             onChange={(e) => setDireccion(e.target.value)} 
           />
         </div>
+        {/*apartado de planes*/}
+        <div>
+          <label>Elija un plan:</label>
+          <select value={planSeleccionado} onChange={(e) => setPlanSeleccionado(e.target.value)}>
+            <option value="">-- Selecciona una opción --</option>
+            {planes.map((plan) => (
+              <option key={plan.nombre} value={plan.id}>
+                {plan.nombre}
+              </option>
+            ))}
+          </select>
+
+            {planSeleccionado && (
+                <p>
+                  Esto trae el plan:{" "}
+                  <strong>
+                    {
+                      planes.find((plan) => plan.id === parseInt(planSeleccionado))?.nombre
+                    }
+                  </strong>
+                  <strong>
+                    {
+                      planes.find((plan) => plan.id === parseInt(planSeleccionado))?.descripcion
+                    }
+                  </strong>
+                </p>
+              )}
+          </div>
+
+
         <div className="conatiner">
           <div class="row">
             <div class="col-4">

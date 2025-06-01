@@ -18,6 +18,7 @@ class RegistroController extends Controller
             'password' => 'required|string|min:6|confirmed',
             'telefono' => 'nullable|string|max:15', // Cambiar a 'nullable' para permitir vacío
             'direccion' => 'nullable|string|max:255', // Cambiar a 'nullable' para permitir vacío
+            'plan_id'=> 'nullable|int',
         ]);
         
 
@@ -31,6 +32,9 @@ class RegistroController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'telefono'=> $request->telefono,
+            'direccion' => $request->direccion, 
+            'plan_id' => $request->plan_id,
         ]);
 
         // Retornar una respuesta exitosa con el usuario creado

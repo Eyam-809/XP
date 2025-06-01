@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Plan extends Model
 {
+    protected $table = 'planes';
     use HasFactory;
 
     public function usuarios()
