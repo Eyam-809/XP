@@ -57,7 +57,7 @@ function Login() {
 
       {/* Sección del formulario */}
       <div className="form-container">
-        <h2 className="text_black">Iniciar sesión</h2>
+        <center><h2 className="text_black">Iniciar sesión</h2></center>
         <form onSubmit={handleSubmit}>
           <div>
             <label className="text_black">Email</label>

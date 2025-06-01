@@ -138,7 +138,7 @@ function Carrito() {
       {/* Barra de navegación */}
       <nav className="nav_DeCom">
         <div className="max-w-12xl mx-auto flex justify-between items-center">
-          <h1 className="text-xl font-bold" onClick={() => navigate("/dashboard")}>XPMartek</h1>
+          <h1 className="text-xl font-bold" onClick={() => navigate("/dashboard")}>XPMarket</h1>
 
           {/* Menú de navegación */}
           <div className="flex items-center space-x-4">
