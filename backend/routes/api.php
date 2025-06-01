@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\PlanVigencia;
+use Carbon\Carbon;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -19,10 +22,28 @@ use App\Http\Controllers\planesController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+Route::middleware('auth:sanctum')->get('/user', [UsuariosController::class, 'show']);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
+function verificarVigenciaPlan($user) {
+    $vigencia = PlanVigencia::where('user_id', $user->id)->first();
+
+    if ($vigencia) {
+        if (Carbon::now()->gt($vigencia->fecha_fin)) {
+            // Si venció, degradar
+            if ($user->plan_id != 1) {
+                $user->plan_id = 1;
+                $user->save();
+            }
+        } else {
+            // Si está vigente y está en plan básico, actualizarlo
+            if ($user->plan_id != 2) {
+                $user->plan_id = 2;
+                $user->save();
+            }
+        }
+    }
+}
 
 
 Route::post('/registros', [RegistroController::class, 'registrar']);
@@ -34,6 +55,7 @@ Route::post('login', function (Request $request) {
     if (Auth::attempt($credentials)) {
         // El usuario ha sido autenticado
         $user = Auth::user();
+        verificarVigenciaPlan($user);
         $token = $user->createToken('MyApp')->plainTextToken;
 
         return response()->json(['token' => $token, 'user' => $user], 200);

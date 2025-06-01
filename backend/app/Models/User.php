@@ -57,5 +57,10 @@ class User extends Authenticatable
     return $this->belongsTo(Plan::class);
 }
 
+public function planVigencia()
+{
+    return $this->hasOne(PlanVigencia::class);
+}
+
     
 }

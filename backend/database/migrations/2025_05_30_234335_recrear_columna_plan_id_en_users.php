@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 class RecrearColumnaPlanIdEnUsers extends Migration
-{
+{/*
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
@@ -27,6 +27,6 @@ class RecrearColumnaPlanIdEnUsers extends Migration
             $table->dropForeign(['plan_id']);
             $table->dropColumn('plan_id');
         });
-    }
+    }*/
 }
 

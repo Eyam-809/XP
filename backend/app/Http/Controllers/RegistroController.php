@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\PlanVigencia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Carbon\Carbon;
 
 class RegistroController extends Controller
 {
@@ -16,13 +18,11 @@ class RegistroController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
-            'telefono' => 'nullable|string|max:15', // Cambiar a 'nullable' para permitir vacío
-            'direccion' => 'nullable|string|max:255', // Cambiar a 'nullable' para permitir vacío
+            'telefono' => 'nullable|string|max:15',
+            'direccion' => 'nullable|string|max:255',
             'plan_id'=> 'nullable|int',
         ]);
         
-
-        // Si la validación falla, retornamos un error con los detalles
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 400);
         }
@@ -37,8 +37,21 @@ class RegistroController extends Controller
             'plan_id' => $request->plan_id,
         ]);
 
-        // Retornar una respuesta exitosa con el usuario creado
-        return response()->json(['message' => 'Usuario registrado exitosamente', 'user' => $user], 201);
+        // Verifica si no es plan 2, y lo actualiza a plan 2 + crea vigencia
+        if ($user->plan_id == 2) {
+            PlanVigencia::updateOrCreate(
+                ['user_id' => $user->id],
+                [
+                    'fecha_inicio' => Carbon::today(),
+                    'fecha_fin' => Carbon::today()->addDays(30),
+                ]
+            );
+        }
+
+        return response()->json([
+            'message' => 'Usuario registrado exitosamente',
+            'user' => $user
+        ], 201);
     }
 }
 

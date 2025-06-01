@@ -11,6 +11,8 @@ function Dashboard() {
   const [filteredResults, setFilteredResults] = useState([]);
   const [menuAbierto, setMenuAbierto] = useState(false);
   const [usuario, setUser] = useState(null);
+  const [mensajePlan, setMensajePlan] = useState(null);
+
 
   useEffect(() => {
     fetchProductos();
@@ -45,6 +47,7 @@ function Dashboard() {
   //console.log("este es el plan que tiene " + plan_id)
 
   useEffect(() => {
+    let cancelado = false;
   const fetchUser = async () => {
     const token = localStorage.getItem("token");
 
@@ -56,12 +59,33 @@ function Dashboard() {
 
     if (response.ok) {
       const data = await response.json();
-      setUser(data);
+      console.log("Respuesta user API:", data); // <-- Aquí
+
+      setUser(data.user);
+
+      if (data.mensaje_plan) {
+        window.Swal.fire({
+          icon: "warning",
+          title: "Aviso de Plan",
+          text: data.mensaje_plan,
+          toast: true,
+          position: "top-end",
+          timer: 5000,
+          timerProgressBar: true,
+          showConfirmButton: false,
+        });
+      }
     }
   };
 
   fetchUser();
+
+   return () => {
+    cancelado = true;
+  };
 }, []);
+
+
 
   useEffect(() => {
     if (searchTerm.trim() === "") {
@@ -126,7 +150,6 @@ function Dashboard() {
   }
 
 };
-console.log(usuario)
   return (
     <div>
       <nav>

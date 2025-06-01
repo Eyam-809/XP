@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Console;
-
+use App\Console\Commands\VerificarPlanesVencidos;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -13,6 +13,10 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule): void
     {
         // $schedule->command('inspire')->hourly();
+        //hace la cobrobacion cada dia
+         //$schedule->command('verificar:planes-vencidos')->daily();
+         //hace la comprobacion cada minuto 
+          //$schedule->command('verificar:planes-vencidos')->everyTwoMinutes();
     }
 
     /**
@@ -23,5 +27,12 @@ class Kernel extends ConsoleKernel
         $this->load(__DIR__.'/Commands');
 
         require base_path('routes/console.php');
+        // VerificarPlanesVencidos::class,
+        
     }
+    /*protected $commands = [
+        VerificarPlanesVencidos::class,
+    ];*/
+
+
 }

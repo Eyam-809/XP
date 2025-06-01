@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use App\Models\PlanVigencia;
+use Carbon\Carbon;
 
 class UsuariosController extends Controller
 {
@@ -16,9 +18,32 @@ class UsuariosController extends Controller
 
     // Obtener información del usuario autenticado
     public function show(Request $request)
-    {
-        return response()->json($request->user());
+{
+    $user = $request->user();
+    $mensaje = null;
+
+    if ($user->plan_id == 2) {
+        $vigencia = PlanVigencia::where('user_id', $user->id)->first();
+
+        if ($vigencia) {
+            $hoy = Carbon::now();
+            $fechaFin = Carbon::parse($vigencia->fecha_fin);
+            $diasRestantes = $hoy->diffInDays($fechaFin, false);
+
+            if ($diasRestantes <= 7 && $diasRestantes >= 0) {
+                $mensaje = "⚠️ Tu plan vencerá en $diasRestantes días (el " . $fechaFin->toDateString() . ").";
+            }
+        }
     }
+
+    return response()->json([
+        'user' => $user,
+        'mensaje_plan' => $mensaje,  // <-- Asegúrate que envías esto
+    ]);
+}
+
+
+
 
     // Crear un nuevo usuario
     public function store(Request $request)
