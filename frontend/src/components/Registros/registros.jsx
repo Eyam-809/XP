@@ -36,7 +36,8 @@ function Registro() {
         password_confirmation,
         telefono, // Ahora está definido
         direccion,  // Ahora está definido
-        plan_id: planSeleccionado
+        plan_id: parseInt(planSeleccionado)
+
     };
 
     try {

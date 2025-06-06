@@ -8,26 +8,28 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
+use App\Mail\Bienvenida;
+use Illuminate\Support\Facades\Mail;
 
 class RegistroController extends Controller
 {
     // Método para registrar un nuevo usuario
     public function registrar(Request $request)
-    {
+{
+    try {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
             'telefono' => 'nullable|string|max:15',
             'direccion' => 'nullable|string|max:255',
-            'plan_id'=> 'nullable|int',
+            'plan_id' => 'required|exists:planes,id',
         ]);
         
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 400);
         }
 
-        // Crear el nuevo usuario
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -37,7 +39,6 @@ class RegistroController extends Controller
             'plan_id' => $request->plan_id,
         ]);
 
-        // Verifica si no es plan 2, y lo actualiza a plan 2 + crea vigencia
         if ($user->plan_id == 2) {
             PlanVigencia::updateOrCreate(
                 ['user_id' => $user->id],
@@ -48,10 +49,20 @@ class RegistroController extends Controller
             );
         }
 
+       Mail::to($user->email)->send(new Bienvenida($user));
+
+
         return response()->json([
             'message' => 'Usuario registrado exitosamente',
             'user' => $user
         ], 201);
+    } catch (\Exception $e) {
+        return response()->json([
+            'error' => 'Error interno del servidor',
+            'message' => $e->getMessage(),
+        ], 500);
     }
+}
+
 }
 

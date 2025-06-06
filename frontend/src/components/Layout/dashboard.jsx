@@ -70,8 +70,8 @@ function Dashboard() {
           text: data.mensaje_plan,
           toast: true,
           position: "top-end",
-          timer: 5000,
-          timerProgressBar: true,
+          timer: 2500,
+          timerProgressBar: false,
           showConfirmButton: false,
         });
       }
