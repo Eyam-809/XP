@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Mail\ProductoSubido;
+use Illuminate\Support\Facades\Mail;
 
 class ProductController extends Controller
 {
@@ -41,6 +43,8 @@ class ProductController extends Controller
     }
 
     $product->save();
+
+     Mail::to($product->user->email)->send(new ProductoSubido($product));
 
     return response()->json([
         'message' => 'Producto creado con éxito',
